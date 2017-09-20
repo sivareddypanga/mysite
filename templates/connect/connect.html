@@ -1,0 +1,37 @@
+{% extends 'home/header.html' %}
+{% load widget_tweaks %}
+{% block title %}Connect{% endblock %}
+{% block connect_active %}active{% endblock %}
+{% block content %}
+<div class = "main_content">
+<p style="padding-left: 20px;"> <b>Please submit the below details, if you have any interesting projects to work on, or you are looking for a Python
+                Developer. I will respond to you immediately.</b></p>
+
+            <div class="row" style="padding-top: 10px;">
+                <form class="form-horizontal" method="post">
+                {% csrf_token %}
+                {% for field in form.visible_fields %}
+                    <div class="form-group">
+                        <div class="control-label col-xs-2 col-xs-offset-2">
+                        {{ field.label_tag }}
+                        </div>
+                        <div class= "col-xs-5">
+                        {% render_field field class="form-control" %}
+                        </div>
+                     </div>
+                {% endfor %}
+
+                <div class="form-group">
+                    <div class="col-xs-offset-4 col-xs-5">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+
+               </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+{% endblock %}
